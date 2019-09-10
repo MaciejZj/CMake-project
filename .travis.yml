@@ -1,0 +1,24 @@
+language: cpp
+os: linux
+
+complier:
+  - gcc
+  - clang
+
+addons:
+  apt:
+    packages: lcov
+
+before_script:
+  - mkdir build
+  - cd build
+  - cmake -DENABLE_COVERAGE=ON ..
+
+script: make && ctest
+
+after_success:
+  - lcov --capture --directory . --output-file coverage.info
+  # To also not include test code in coverage add them with full path to the patterns: '*/tests/*'
+  - lcov --remove coverage.info '/usr/*' "${HOME}"'/.cache/*' --output-file coverage.info
+  - bash <(curl -s https://codecov.io/bash) -t 06fa5b08-3be1-480a-9af4-ffcec2672fa1 -f coverage.info || echo "Codecov did not collect coverage reports"
+
