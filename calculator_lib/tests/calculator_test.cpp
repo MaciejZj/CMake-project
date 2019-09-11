@@ -15,6 +15,14 @@ TEST_F(CalculatorTest, AddsCorrectly) {
 	EXPECT_EQ(clc.add(1, 2), 3);
 }
 
+TEST_F(CalculatorTest, SubtractsCorrectly) {
+	EXPECT_EQ(clc.sub(5, 2), 3);
+}
+
+TEST_F(CalculatorTest, MultipliesCorrectly) {
+	EXPECT_EQ(clc.mul(2, 3), 6);
+}
+
 TEST_F(CalculatorTest, SquaresCorrectly) {
 	EXPECT_CALL(sqrt_mock, compute(_))
 		.WillOnce(Return(4));
