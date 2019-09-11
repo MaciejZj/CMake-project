@@ -16,7 +16,7 @@ TEST_F(CalculatorTest, AddsCorrectly) {
 }
 
 TEST_F(CalculatorTest, SubtractCorrectly) {
-	EXPECT_EQ(clc.sub(2, 1), 1);
+	EXPECT_EQ(clc.sub(5, 2), 3);
 }
 
 TEST_F(CalculatorTest, MultipliesCorrectly) {
