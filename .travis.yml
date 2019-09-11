@@ -8,13 +8,21 @@ complier:
 addons:
   apt:
     packages: lcov
+  sonarcloud:
+    organization: "maciejzj"
+    token:
+      secure: "auwXhWVBKhP8kxA251P/dW16Nyuu/7I+0Fk2F7WuNNkkNDD/h5yrhe+zsxKoocOhMjWqV4yzxKwr0xtt5EIoBouAezkT5G+dYXe2Sc9r820lBOmt3LYLIdPTqojbl3xyzJoo6wfiL0UKLDnB1dBa/CGCzCmZm/ipYAzGxLKZsH5yjEuqjdUkxURTOI/R3Ptdh6uesoYn5YMVckRQjy8rIGQ1EuMBL+18gUIgNYudj4Y4NGpPrgXCxjR2b0BAA40cR9t0djiHoJ2AxejHL51scr7w//lWNaGPhtfr3tPs2j/CcQ+YKuu9ecKjYzMVFGimJ5NkXgEsl1zslg46+bCDJPWNtkdvuN3jnsf9cjr+O3JPlDAxX6CnZubjrDLRxJcEcWibrF3XtoBHMt7P0nMDqCnDHmbCJZFS1X/X00pz0Ma8yEvH9XdNUkighnzfc0qKg+ybgVI+O6NtOxAGvPh6fWsMS6SjmJlrvK60QHaNziCcFCoUTOZyMmXwcjwNYusPVIirONDobbbmgid2FzXUpGwOsH+m+AmbLDyKj75RGNUysF+VEmJWk+Pr9ZSspmJJBB9ER7x8kzqBJHd9brSZJuLmqjjx89TOf2z484AZnTPWVcXJBkA7NPFne6nHuLV0Dy4s5AY519aBJF9ND0KIZMxDrsKzDtrqWFa+/vRZan4=" # encrypted value of token
 
 before_script:
   - mkdir build
   - cd build
   - cmake -DENABLE_COVERAGE=ON ..
 
-script: make && ctest
+script:
+  - make clean
+  - build-wrapper-linux-x86-64 --out-dir bw-output make all
+  - ctest
+  - sonar-scanner
 
 after_success:
   - lcov --capture --directory . --output-file coverage.info
