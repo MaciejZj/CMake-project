@@ -20,12 +20,23 @@ before_script:
 
 script:
   - make clean
+  # The wrapper is required by Sonar Cloud
   - build-wrapper-linux-x86-64 --out-dir bw-output make all
   - ctest
 
 after_success:
+  # Lcov coverage for Codecov
   - lcov --capture --directory . --output-file coverage.info
   # To also not include test code in coverage add them with full path to the patterns: '*/tests/*'
   - lcov --remove coverage.info '/usr/*' "${HOME}"'/.cache/*' --output-file coverage.info
   - bash <(curl -s https://codecov.io/bash) -t 06fa5b08-3be1-480a-9af4-ffcec2672fa1 -f coverage.info || echo "Codecov did not collect coverage reports"
+  # Generate gcov files for SonarCloud
+  - LOCATION=gcovfiles
+  - find -name '*.c' -exec cp -t $LOCATION {} +
+  - find -name '*.gcno' -exec cp -t $LOCATION {} +
+  - find -name '*.gcda' -exec cp -t $LOCATION {} +
+  - cd $LOCATION
+  - find $LOCATION -name '*.c' -exec gcov -bf {} \;
+  # Report to SonarCloud
   - sonar-scanner -Dproject.settings=../.sonarcloud.properties
+
