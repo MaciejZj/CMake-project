@@ -1,6 +1,5 @@
 cmake_minimum_required(VERSION 3.0)
 
-set(CMAKE_CXX_STANDARD 11)
 
 add_subdirectory(vendor)
 
@@ -10,6 +9,7 @@ add_executable(calculator_test
 	calculator_test.cpp
 	square_root_test.cpp
 )
+target_compile_features(calculator_test PRIVATE cxx_std_11)
 gtest_discover_tests(
 	calculator_test	
 )
