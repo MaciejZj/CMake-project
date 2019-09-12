@@ -26,7 +26,6 @@ target_compile_options(calculator PRIVATE
 	 -Wpedantic # warn if non-standard C++ is used
 	 -Wconversion # warn on type conversions that may lose data
 	 -Wsign-conversion # warn on sign conversions
-	 -Wnull-dereference # warn if a null dereference is detected
 	 -Wdouble-promotion # warn if float is implicit promoted to double
  )
 target_compile_features(calculator
