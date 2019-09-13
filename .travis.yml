@@ -19,27 +19,27 @@ matrix:
 before_script:
   - mkdir build
   - cd build
-  - cmake -DENABLE_COVERAGE="${ENABLE_COVERAGE}" ..
+  - sh -c "cmake -DENABLE_COVERAGE="${ENABLE_COVERAGE}" .."
 
 script:
   - make clean
   # The wrapper is required by Sonar Cloud
-  - eval "${BUILD_WRAPPER}" cmake --build . -j2
+  - sh -c "eval "${BUILD_WRAPPER}" cmake --build . -j2
   - ctest -j2
 
 after_success:
   # Lcov coverage for Codecov
   # To not include test code in coverage add them to the patterns: '*/tests/*'
   - >
-    [ -n "${ENABLE_COVERAGE}" ] &&
+    sh -c "[ -n "${ENABLE_COVERAGE}" ] &&
     lcov --capture --directory . --output-file coverage.info &&
     lcov --remove coverage.info '/usr/*' "${HOME}"'/.cache/*'
     --output-file coverage.info &&
     bash <(curl -s https://codecov.io/bash) -t
     06fa5b08-3be1-480a-9af4-ffcec2672fa1 -f coverage.info ||
-    echo "Codecov did not collect coverage reports"
+    echo "Codecov did not collect coverage reports""
   - >
-    [ -n "${SONAR_BUILD_WRAPPER}" ] &&
+    sh -c "[ -n "${SONAR_BUILD_WRAPPER}" ] &&
     cd .. &&
-    sonar-scanner -Dproject.settings=.sonarcloud.properties
+    sonar-scanner -Dproject.settings=.sonarcloud.properties"
 
