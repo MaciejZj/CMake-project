@@ -24,7 +24,7 @@ before_script:
 script:
   - make clean
   # The wrapper is required by Sonar Cloud
-  - ${BUILD_WRAPPER} make -j2
+  - ${SONAR_BUILD_WRAPPER} make all -j2
   - ctest -j2
 
 after_success:
