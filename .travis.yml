@@ -19,13 +19,12 @@ matrix:
 before_script:
   - mkdir build
   - cd build
-  - sh -c "cmake -DENABLE_COVERAGE=$ENABLE_COVERAGE .."
+  - sh -c cmake -DENABLE_COVERAGE=${ENABLE_COVERAGE} ..
 
 script:
   - make clean
-  - echo $ENABLE_COVERAGE
   # The wrapper is required by Sonar Cloud
-  - sh -c "eval "${BUILD_WRAPPER}" cmake --build . -j2
+  - ${BUILD_WRAPPER} cmake --build . -j2
   - ctest -j2
 
 after_success:
