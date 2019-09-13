@@ -19,7 +19,7 @@ matrix:
 before_script:
   - mkdir build
   - cd build
-  - sh -c cmake -DENABLE_COVERAGE=${ENABLE_COVERAGE} ..
+  - cmake -DENABLE_COVERAGE=${ENABLE_COVERAGE} ..
 
 script:
   - make clean
