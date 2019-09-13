@@ -23,6 +23,7 @@ before_script:
 
 script:
   - make clean
+  - echo $ENABLE_COVERAGE
   # The wrapper is required by Sonar Cloud
   - sh -c "eval "${BUILD_WRAPPER}" cmake --build . -j2
   - ctest -j2
