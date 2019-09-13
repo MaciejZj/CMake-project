@@ -23,6 +23,10 @@ TEST_F(CalculatorTest, MultipliesCorrectly) {
 	EXPECT_EQ(clc.mul(2, 3), 6);
 }
 
+TEST_F(CalculatorTest, DividesCorrectly) {
+	EXPECT_EQ(clc.div(6, 3), 2);
+}
+
 TEST_F(CalculatorTest, SquaresCorrectly) {
 	EXPECT_CALL(sqrt_mock, compute(_))
 		.WillOnce(Return(4));
