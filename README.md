@@ -13,14 +13,10 @@ Sample project playground created for getting the hang of Cmake and CI/CD for C+
 - [ ] **CMake**
 
   - [x] Basic structure
-  - [ ] Example of external library
+  - [x] Example of external library
   - [ ] Install and export
-  - [ ] Cross compiling for ARM
 
-- [ ] **Travis CI**
-
-  - [x] Basic build
-  - [ ] Advanced build (Multiple platforms, RPi)
+- [x] Travis CI
 
 - [x] Google test
 
@@ -29,8 +25,3 @@ Sample project playground created for getting the hang of Cmake and CI/CD for C+
 - [x] Code quality with [codacy](https://www.codacy.com)
 
 - [ ] Clangtidy/Cppcheck
-
-- [ ] Proper docs system
-
-- [ ] Git workflow
-
