@@ -1,5 +1,5 @@
 #pragma once
-#include "calculator/square_root.hpp"
+#include "square_root.hpp"
 
 namespace calc {
 class Calculator {
