@@ -10,7 +10,7 @@ Sample project playground created for getting the hang of Cmake and CI/CD for C+
 
 ## Goals
 
-- [ ] **CMake**
+- [x] **CMake**
 
   - [x] Basic structure
   - [x] Example of external library
