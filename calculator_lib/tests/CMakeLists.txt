@@ -11,7 +11,7 @@ add_executable(calculator_test
 )
 target_compile_features(calculator_test PRIVATE cxx_std_11)
 gtest_discover_tests(
-	calculator_test	
+	calculator_test
 )
 target_link_libraries(calculator_test
 	gtest_main
@@ -22,4 +22,10 @@ target_include_directories(calculator_test
 	PRIVATE
 		${CMAKE_CURRENT_SOURCE_DIR}/mocks
 )
+
+
+include(CTest)
+enable_testing()
+add_subdirectory(tests)
+
 
