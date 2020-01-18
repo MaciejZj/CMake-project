@@ -23,9 +23,3 @@ target_include_directories(calculator_test
 		${CMAKE_CURRENT_SOURCE_DIR}/mocks
 )
 
-
-include(CTest)
-enable_testing()
-add_subdirectory(tests)
-
-
