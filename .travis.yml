@@ -36,7 +36,7 @@ after_success:
     lcov --remove coverage.info '/usr/*' "${HOME}"'/.cache/*'
     --output-file coverage.info &&
     bash <(curl -s https://codecov.io/bash) -t
-    06fa5b08-3be1-480a-9af4-ffcec2672fa1 -f coverage.info ||
+    2245a929-5fa6-44c8-aaa1-88ef47378505 -f coverage.info ||
     echo "Codecov did not collect coverage reports"
   - >
     [ -n "${SONAR_BUILD_WRAPPER}" ] &&
