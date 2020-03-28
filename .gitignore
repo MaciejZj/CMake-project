@@ -1,6 +1,10 @@
 # Prerequisites
 *.d
 
+# Extra files
+.clangd
+.clang-format
+
 # Compiled Object files
 *.slo
 *.lo

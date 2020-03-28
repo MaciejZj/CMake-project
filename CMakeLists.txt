@@ -9,4 +9,3 @@ add_subdirectory(external/spdlog)
 enable_testing()
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
-

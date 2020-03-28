@@ -9,4 +9,3 @@ target_link_libraries(application
 	calculator::calculator
 	spdlog
 )
-
